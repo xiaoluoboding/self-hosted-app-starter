@@ -1,0 +1,13 @@
+root = "./backend"
+tmp_dir = ".air"
+
+[build]
+  bin = "./.air/sha"
+  cmd = "go build -o ./.air/sha ./backend/bin/server/main.go"
+  delay = 1000
+  exclude_dir = [".air", "frontend"]
+  exclude_file = []
+  exclude_regex = []
+  exclude_unchanged = false
+  follow_symlink = false
+  full_bin = ""
