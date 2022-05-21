@@ -2,7 +2,7 @@
 FROM node:14.18.2-alpine3.14 AS frontend
 WORKDIR /frontend-build
 
-COPY ./web/ .
+COPY ./frontend/ .
 
 RUN yarn
 RUN yarn build
