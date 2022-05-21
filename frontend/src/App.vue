@@ -1,14 +1,14 @@
 <template>
-  <header>
+  <header class="w-full flex flex-col">
     <img
       alt="Vue logo"
-      class="block mx-auto mt-0 mb-8 lg:mr-8"
-      src="@/assets/logo.svg"
-      width="125"
-      height="125"
+      class="block my-8"
+      src="@/assets/logo-sha.svg"
+      width="320"
+      height="320"
     />
     <div class="wrapper" lg="flex place-items-center flex-wrap">
-      <HelloWorld :msg="$t('hello', { name: 'A better Vue 3 Starter' })" />
+      <HelloWorld :msg="$t('hello', { name: 'Self Hosted App Starter' })" />
       <nav
         class="w-full text-xs text-center mt-8"
         lg="text-left text-base py-4 px-0 mt-4 -ml-4"
@@ -60,7 +60,10 @@ const { locale, availableLocales } = useI18n()
 const userStore = useUserStore()
 
 const gotoGitHub = () => {
-  window.open('https://github.com/xiaoluoboding/vue3-starter', '_blank')
+  window.open(
+    'https://github.com/xiaoluoboding/self-hosted-app-starter',
+    '_blank'
+  )
 }
 
 const toggleLocales = () => {
@@ -142,12 +145,6 @@ nav a:first-of-type {
     display: grid;
     grid-template-columns: 1fr 1fr;
     padding: 0 2rem;
-  }
-
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
   }
 }
 </style>

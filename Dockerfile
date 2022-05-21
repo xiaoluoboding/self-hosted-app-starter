@@ -4,8 +4,8 @@ WORKDIR /frontend-build
 
 COPY ./frontend/ .
 
-RUN yarn
-RUN yarn build
+RUN pnpm install --s
+RUN pnpm run build
 
 # Build backend exec file.
 FROM golang:1.16.12-alpine3.15 AS backend

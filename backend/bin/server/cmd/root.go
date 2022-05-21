@@ -13,12 +13,15 @@ import (
 // -----------------------------------Global constant BEGIN----------------------------------------
 const (
 	// greetingBanner is the greeting banner.
-	// http://patorjk.com/software/taag/#p=display&f=ANSI%20Shadow&t=Bytebase
+	// http://patorjk.com/software/taag/#p=display&f=ANSI%20Shadow&t=SHA
 	greetingBanner = `
 
-	╔═╗╔═╗╦  ╔═╗  ╦ ╦╔═╗╔═╗╔╦╗╔═╗╔╦╗  ╔═╗╔═╗╔═╗
-	╚═╗║╣ ║  ╠╣   ╠═╣║ ║╚═╗ ║ ║╣  ║║  ╠═╣╠═╝╠═╝
-	╚═╝╚═╝╩═╝╚    ╩ ╩╚═╝╚═╝ ╩ ╚═╝═╩╝  ╩ ╩╩  ╩  
+███████╗██╗  ██╗ █████╗ 
+██╔════╝██║  ██║██╔══██╗
+███████╗███████║███████║
+╚════██║██╔══██║██╔══██║
+███████║██║  ██║██║  ██║ 
+╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝ 𝗦𝗘𝗟𝗙 𝗛𝗢𝗦𝗧𝗘𝗗 𝗔𝗣𝗣
 																																														
 ____________________________________________________
 
@@ -39,7 +42,7 @@ ____________________________________________________
 
 var rootCmd = &cobra.Command{
   Use:   "SHA",
-  Short: "Self Hosted App Starter (AKA: SHA)",
+  Short: "Self Hosted App (AKA: SHA)",
   Long: `Self Hosted App Starter is a template to help you get started with a self hosted app.
   	Complete documentation is available at http://github.com/xiaoluoboding/self-hosted-app-starter`,
   Run: func(cmd *cobra.Command, args []string) {
@@ -48,12 +51,14 @@ var rootCmd = &cobra.Command{
 			profile: profile,
 		}
 
+    fmt.Printf(greetingBanner)
+
 		err := m.init()
+
 		if err != nil {
 			fmt.Printf("%+v\n", err)
 			os.Exit(1)
 		}
-    fmt.Printf(greetingBanner)
   },
 }
 

@@ -4,10 +4,14 @@
 
 declare module 'vue' {
   export interface GlobalComponents {
+    'Carbon:dotMark': typeof import('~icons/carbon/dot-mark')['default']
     'Carbon:language': typeof import('~icons/carbon/language')['default']
+    'Carbon:logo-': typeof import('~icons/carbon/logo-')['default']
     'Carbon:logoGithub': typeof import('~icons/carbon/logo-github')['default']
+    'Carbon:logoVue': typeof import('~icons/carbon/logo-vue')['default']
     'Carbon:moon': typeof import('~icons/carbon/moon')['default']
     'Carbon:sun': typeof import('~icons/carbon/sun')['default']
+    'Fa6Brands:golang': typeof import('~icons/fa/6-brands-golang')['default']
     HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
     IconCommunity: typeof import('./src/components/icons/IconCommunity.vue')['default']
     IconDocumentation: typeof import('./src/components/icons/IconDocumentation.vue')['default']

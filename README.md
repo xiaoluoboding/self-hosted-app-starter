@@ -1,3 +1,9 @@
+<p align="center">
+  <a href="https://github.com/xiaoluoboding/self-hosted-app-starter">
+    <img src="/public/logo-sha.svg" width="256">
+  </a>
+</p>
+
 <h1 align="center">Self Hosted App Starter</h1>
 
 <p align="center">A self hosted app starter for full-stack developer/creator.</p>
@@ -40,13 +46,13 @@ Generate by [vue3-starter](https://github.com/xiaoluoboding/vue3-starter)
 
 1. Install [Air](https://github.com/cosmtrek/air#installation).
 
-1. Pull source.
+2. Pull source.
 
 ```bash
 npx degit xiaoluoboding/self-hosted-app-starter my-self-hosted-app
 ```
 
-2. Start backend using air (with live reload).
+3. Start backend using air (with live reload).
 
 ```bash
 pnpm run dev:be
@@ -60,7 +66,7 @@ Change the open file limit if you encounter "error: too many open files".
 ulimit -n 10240
 ```
 
-3. Start frontend (with live reload).
+4. Start frontend (with live reload).
 
 ```bash
 pnpm run dev:fe
