@@ -4,7 +4,7 @@ WORKDIR /frontend-build
 
 COPY ./frontend/ .
 
-RUN pnpm install --s
+RUN pnpm install --shamefully-hoist
 RUN pnpm run build
 
 # Build backend exec file.
