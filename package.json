@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev:be": "air -c backend/scripts/.air.toml",
-    "dev:fe": "cd frontend && pnpm dev"
+    "dev:fe": "cd frontend && pnpm i && pnpm dev"
   },
   "repository": {
     "type": "git",

@@ -16,17 +16,17 @@ RUN apk --no-cache add gcc musl-dev
 COPY . .
 
 RUN go build \
-    -o sha-starter \
+    -o sha \
     ./backend/bin/server/main.go
 
 # Make workspace with above generated files.
 FROM alpine:3.14.3 AS monolithic
-WORKDIR /usr/local/sha-starter
+WORKDIR /usr/local/sha
 
-COPY --from=backend /backend-build/sha-starter /usr/local/sha-starter/
-COPY --from=frontend /frontend-build/dist /usr/local/sha-starter/frontend/dist
+COPY --from=backend /backend-build/sha /usr/local/sha/
+COPY --from=frontend /frontend-build/dist /usr/local/sha/frontend/dist
 
 # Directory to store the data, which can be referenced as the mounting point.
-RUN mkdir -p /var/opt/sha-starter
+RUN mkdir -p /var/opt/sha
 
-ENTRYPOINT ["./sha-starter"]
+ENTRYPOINT ["./sha"]

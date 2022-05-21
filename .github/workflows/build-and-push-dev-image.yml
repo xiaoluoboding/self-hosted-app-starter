@@ -28,4 +28,4 @@ jobs:
           context: ./
           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/sha-starter:dev
+          tags: ${{ secrets.DOCKER_USERNAME }}/sha:dev
