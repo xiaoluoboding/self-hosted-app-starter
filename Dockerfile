@@ -4,8 +4,8 @@ WORKDIR /frontend-build
 
 COPY ./frontend/ .
 
-RUN pnpm install --shamefully-hoist
-RUN pnpm run build
+RUN yarn
+RUN yarn build
 
 # Build backend exec file.
 FROM golang:1.16.12-alpine3.15 AS backend
