@@ -17,14 +17,14 @@ COPY . .
 
 RUN go build \
     -o sha-starter \
-    ./bin/server/main.go
+    ./backend/bin/server/main.go
 
 # Make workspace with above generated files.
 FROM alpine:3.14.3 AS monolithic
 WORKDIR /usr/local/sha-starter
 
 COPY --from=backend /backend-build/sha-starter /usr/local/sha-starter/
-COPY --from=frontend /frontend-build/dist /usr/local/sha-starter/web/dist
+COPY --from=frontend /frontend-build/dist /usr/local/sha-starter/frontend/dist
 
 # Directory to store the data, which can be referenced as the mounting point.
 RUN mkdir -p /var/opt/sha-starter
