@@ -1,122 +1,86 @@
-type ResponseObject<T> = {
+import qs from 'qs'
+import axios from 'axios'
+import type { AxiosResponse, AxiosError } from 'axios'
+
+axios.defaults.timeout = 90000
+axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest'
+axios.defaults.headers.post['Content-Type'] = 'application/json; charset=UTF-8'
+axios.defaults.withCredentials = true
+axios.defaults.responseType = 'json'
+
+axios.interceptors.request.use(
+  (config) => {
+    return config
+  },
+  (error) => {
+    return Promise.reject(error)
+  }
+)
+
+axios.interceptors.response.use(
+  (response) => {
+    return response
+  },
+  (error) => {
+    return Promise.resolve(error.response)
+  }
+)
+
+type ApiResponse<T> = {
   data: T
-  error?: string
+  error?: boolean
   message?: string
 }
 
-type RequestConfig = {
-  method: string
-  url: string
-  data?: any
-  dataType?: 'json' | 'file'
-}
-
-async function request<T>(config: RequestConfig): Promise<T> {
-  const { method, url, data, dataType } = config
-  const requestConfig: RequestInit = {
-    method
+const mapData = (type: string, params: any) => {
+  if (type === 'post') {
+    return qs.stringify(params)
   }
 
-  if (data !== undefined) {
-    if (dataType === 'file') {
-      requestConfig.body = data
-    } else {
-      requestConfig.headers = {
-        'Content-Type': 'application/json'
-      }
-      requestConfig.body = JSON.stringify(data)
-    }
+  return null
+}
+
+function request<T>(
+  url: string,
+  type: string,
+  params: any
+): Promise<ApiResponse<T>> {
+  const config = {
+    method: type,
+    url,
+    params: type === 'get' ? params : null,
+    data: mapData(type, params)
   }
-
-  const response = await fetch(url, requestConfig)
-  const responseData = (await response.json()) as ResponseObject<T>
-
-  if (responseData.error || responseData.message) {
-    throw new Error(responseData.error || responseData.message)
-  }
-
-  return responseData.data
-}
-
-export function getSystemStatus() {
-  return request<API.SystemStatus>({
-    method: 'GET',
-    url: '/api/status'
+  return new Promise((resolve, reject) => {
+    axios(config)
+      .then((response: AxiosResponse) => {
+        const res: ApiResponse<T> = {
+          data: response.data.data,
+          error: false,
+          message: response.statusText
+        }
+        resolve(res)
+      })
+      .catch((err: AxiosError) => {
+        reject(err)
+      })
   })
 }
 
-export function getUserList() {
-  return request<Model.User[]>({
-    method: 'GET',
-    url: '/api/user'
-  })
+function get<T>(url: string, params?: any): Promise<ApiResponse<T>> {
+  return request(url, 'get', params)
 }
 
-export function createUser(userCreate: API.UserCreate) {
-  return request<Model.User[]>({
-    method: 'POST',
-    url: '/api/user',
-    data: userCreate
-  })
+function post<T>(url: string, params?: any): Promise<ApiResponse<T>> {
+  return request(url, 'post', params)
 }
 
-export function login(email: string, password: string) {
-  return request<Model.User>({
-    method: 'POST',
-    url: '/api/auth/login',
-    data: {
-      email,
-      password
-    }
-  })
+function patch<T>(url: string, params?: any): Promise<ApiResponse<T>> {
+  return request(url, 'patch', params)
 }
 
-export function signup(email: string, password: string, role: UserRole) {
-  return request<Model.User>({
-    method: 'POST',
-    url: '/api/auth/signup',
-    data: {
-      email,
-      password,
-      role,
-      name: email
-    }
-  })
+export default {
+  get,
+  post,
+  patch
 }
-
-export function signout() {
-  return request({
-    method: 'POST',
-    url: '/api/auth/logout'
-  })
-}
-
-export function getUserInfo() {
-  return request<Model.User>({
-    method: 'GET',
-    url: '/api/user/me'
-  })
-}
-
-export function updateUserinfo(
-  userinfo: Partial<{ name: string; password: string; resetOpenId: boolean }>
-) {
-  return request<Model.User>({
-    method: 'PATCH',
-    url: '/api/user/me',
-    data: userinfo
-  })
-}
-
-const api = {
-  getSystemStatus,
-  getUserList,
-  createUser,
-  login,
-  signup,
-  signout,
-  getUserInfo,
-  updateUserinfo
-}
-
-export default api

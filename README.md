@@ -6,7 +6,7 @@
 
 <h1 align="center">Self Hosted App Starter</h1>
 
-<p align="center">A self hosted app starter for full-stack developer/creator.</p>
+<p align="center">A starter for the self-hosted app, help you to build your next full-stack project.</p>
 
 <p align="center">
   <img alt="GitHub stars" src="https://img.shields.io/github/stars/xiaoluoboding/self-hosted-app-starter" />
@@ -14,11 +14,27 @@
   <img alt="Go report" src="https://goreportcard.com/badge/github.com/xiaoluoboding/self-hosted-app-starter" />
 </p>
 
-## ⚓️ Deploy with Docker
+## Features
+
+> SHA is built on top of GSVT Stack, which stands for Go、SQLite、Vue 3、TailwindCSS
+
+- 🪄 Full-stack starter with GSVT Stack
+- ⚓️ Self-hosted with `Dockerfile` on the fly
+- 💾 Store your data using SQLite database
+- 🖖 Choose your familar Frontend Teck Stack, default is Vue 3
+- 🚄 Deploy you app easily on the Railway
+
+### Deploy Services
+
+### ⚓️ Deploy with Docker
 
 ```docker
 docker run --name sha --publish 3399:8080 --volume ~/.getsha/:/var/opt/sha -e mode=prod getsha/sha:dev
 ```
+
+### 🚄 Deploy on Railway
+
+[![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/new/template/prX7No?referralCode=UEM9NF)
 
 ## Tech Stack
 
@@ -48,33 +64,37 @@ Generate by [vue3-starter](https://github.com/xiaoluoboding/vue3-starter)
 
 2. Pull source.
 
-```bash
-npx degit xiaoluoboding/self-hosted-app-starter my-self-hosted-app
-```
+   ```bash
+   npx degit xiaoluoboding/self-hosted-app-starter my-self-hosted-app
+   ```
 
 3. Start backend using air (with live reload).
 
-```bash
-pnpm run dev:be
-or
-air -c scripts/.air.toml
-```
+   ```bash
+   pnpm run dev:be
+   or
+   air -c backend/scripts/.air.toml
+   ```
 
-Change the open file limit if you encounter "error: too many open files".
+   > Change the open file limit if you encounter "error: too many open files".
 
-```
-ulimit -n 10240
-```
+   ```bash
+   ulimit -n 10240
+   ```
 
 4. Start frontend (with live reload).
 
-```bash
-pnpm run dev:fe
-or
-cd frontend && pnpm i && pnpm dev
-```
+   ```bash
+   pnpm run dev:fe
+   or
+   cd frontend && pnpm i && pnpm dev
+   ```
 
 The app should now be running at https://localhost:3000 and change either frontend or backend code would trigger live reload.
+
+## Inspired by
+
+[Bytebase](https://github.com/bytebase/bytebase)
 
 ## License
 

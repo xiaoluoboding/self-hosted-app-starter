@@ -1,17 +1,17 @@
 import { defineStore } from 'pinia'
 
 type UserState = {
-  userList: Model.User[]
+  userList: Map<number, User>
 }
 
 export const useUserStore = defineStore({
   id: 'user',
   state: (): UserState => ({
-    userList: []
+    userList: new Map()
   }),
   actions: {
-    addUser(payload: Model.User) {
-      this.userList.push(payload)
+    addUser(user: User) {
+      this.userList.set(user.id, user)
     }
   }
 })

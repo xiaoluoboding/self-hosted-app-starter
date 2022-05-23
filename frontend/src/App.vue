@@ -1,5 +1,7 @@
 <template>
-  <header class="w-full flex flex-col">
+  <header
+    class="w-full flex flex-col justify-center items-center lg:items-start"
+  >
     <img
       alt="Vue logo"
       class="block my-8"
@@ -53,7 +55,7 @@ import { onMounted } from 'vue'
 
 import HelloWorld from '@/components/HelloWorld.vue'
 import { isDark, toggleDark } from '@/composables/useDark'
-import API from '@/utils/api'
+import Services from '@/services'
 import { useUserStore } from '@/stores/user'
 
 const { locale, availableLocales } = useI18n()
@@ -74,8 +76,8 @@ const toggleLocales = () => {
 }
 
 const loginAsGuest = async () => {
-  await API.login('guest@example.com', 'secret')
-  const user = await API.getUserInfo()
+  await Services.login('guest@example.com', 'secret')
+  const { data: user } = await Services.getUserInfo()
   if (user) {
     userStore.addUser(user)
     console.log('login success')
@@ -83,9 +85,9 @@ const loginAsGuest = async () => {
 }
 
 onMounted(async () => {
-  const status = await API.getSystemStatus()
+  const status = await Services.getSystemStatus()
   await loginAsGuest()
-  const userList = await API.getUserList()
+  const userList = await Services.getUserList()
 
   console.log(status)
   console.log(userList)
