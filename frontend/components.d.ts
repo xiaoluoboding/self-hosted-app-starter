@@ -4,10 +4,12 @@
 
 declare module 'vue' {
   export interface GlobalComponents {
+    'Carbon:cafe': typeof import('~icons/carbon/cafe')['default']
     'Carbon:dotMark': typeof import('~icons/carbon/dot-mark')['default']
     'Carbon:language': typeof import('~icons/carbon/language')['default']
     'Carbon:logo-': typeof import('~icons/carbon/logo-')['default']
     'Carbon:logoGithub': typeof import('~icons/carbon/logo-github')['default']
+    'Carbon:logoTwitter': typeof import('~icons/carbon/logo-twitter')['default']
     'Carbon:logoVue': typeof import('~icons/carbon/logo-vue')['default']
     'Carbon:moon': typeof import('~icons/carbon/moon')['default']
     'Carbon:sun': typeof import('~icons/carbon/sun')['default']
@@ -18,6 +20,7 @@ declare module 'vue' {
     IconEcosystem: typeof import('./src/components/icons/IconEcosystem.vue')['default']
     IconSupport: typeof import('./src/components/icons/IconSupport.vue')['default']
     IconTooling: typeof import('./src/components/icons/IconTooling.vue')['default']
+    'Mdi:heart': typeof import('~icons/mdi/heart')['default']
     TheWelcome: typeof import('./src/components/TheWelcome.vue')['default']
     WelcomeItem: typeof import('./src/components/WelcomeItem.vue')['default']
   }

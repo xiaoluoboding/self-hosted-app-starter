@@ -16,6 +16,7 @@
         lg="text-left text-base py-4 px-0 mt-4 -ml-4"
       >
         <RouterLink to="/">{{ $t('menu.home') }}</RouterLink>
+        <RouterLink to="/crud">CRUD Demo</RouterLink>
         <RouterLink to="/about">About</RouterLink>
       </nav>
       <div class="w-full text-center mt-8 space-x-4" lg="text-left">
@@ -46,6 +47,51 @@
   </header>
 
   <RouterView />
+
+  <footer class="fixed left-0 bottom-4 w-full">
+    <div class="mt-8 flex flex-col justify-center items-center space-y-2">
+      <p>
+        Code with ❤️ & ☕️ by
+        <a href="https://github.com/xiaoluoboding" target="_blank"
+          >xiaoluoboding</a
+        >
+      </p>
+      <p class="flex items-center space-x-1">
+        <carbon:logo-twitter class="text-sky-500" />
+        <span>
+          <a
+            href="https://twitter.com/xiaoluoboding"
+            class="text-neon"
+            target="_blank"
+          >
+            Follow me on Twitter
+          </a>
+        </span>
+        <span class="px-2 text-sky-300">|</span>
+        <carbon:cafe class="text-sky-500" />
+        <span>
+          <a
+            href="https://www.buymeacoffee.com/xlbd"
+            target="_blank"
+            class="text-neon"
+          >
+            Buy me a coffee
+          </a>
+        </span>
+        <span class="px-2 text-sky-300">|</span>
+        <mdi:heart class="text-sky-500" />
+        <span>
+          <a
+            href="https://github.com/sponsors/xiaoluoboding"
+            target="_blank"
+            class="text-neon"
+          >
+            Sponsor me on GitHub
+          </a>
+        </span>
+      </p>
+    </div>
+  </footer>
 </template>
 
 <script setup lang="ts">
@@ -55,7 +101,7 @@ import { onMounted } from 'vue'
 
 import HelloWorld from '@/components/HelloWorld.vue'
 import { isDark, toggleDark } from '@/composables/useDark'
-import Services from '@/services'
+import { getSystemStatus, getUserInfo, login } from '@/services'
 import { useUserStore } from '@/stores/user'
 
 const { locale, availableLocales } = useI18n()
@@ -76,21 +122,21 @@ const toggleLocales = () => {
 }
 
 const loginAsGuest = async () => {
-  await Services.login('guest@example.com', 'secret')
-  const { data: user } = await Services.getUserInfo()
+  await login('chris.damon@demo.com', '123456')
+  const { data: user } = await getUserInfo()
   if (user) {
-    userStore.addUser(user)
+    userStore.setCurrentUser(user)
     console.log('login success')
   }
 }
 
 onMounted(async () => {
-  const status = await Services.getSystemStatus()
+  const status = await getSystemStatus()
   await loginAsGuest()
-  const userList = await Services.getUserList()
 
   console.log(status)
-  console.log(userList)
+
+  userStore.fetchUserList()
 })
 </script>
 

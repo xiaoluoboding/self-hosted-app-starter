@@ -49,14 +49,14 @@ function request<T>(
     method: type,
     url,
     params: type === 'get' ? params : null,
-    data: mapData(type, params)
+    data: params
   }
   return new Promise((resolve, reject) => {
     axios(config)
       .then((response: AxiosResponse) => {
         const res: ApiResponse<T> = {
           data: response.data.data,
-          error: false,
+          error: response.status !== 200,
           message: response.statusText
         }
         resolve(res)
@@ -67,20 +67,13 @@ function request<T>(
   })
 }
 
-function get<T>(url: string, params?: any): Promise<ApiResponse<T>> {
-  return request(url, 'get', params)
-}
-
-function post<T>(url: string, params?: any): Promise<ApiResponse<T>> {
-  return request(url, 'post', params)
-}
-
-function patch<T>(url: string, params?: any): Promise<ApiResponse<T>> {
-  return request(url, 'patch', params)
-}
-
 export default {
-  get,
-  post,
-  patch
+  get: <T>(url: string, params?: any): Promise<ApiResponse<T>> =>
+    request(url, 'get', params),
+  post: <T>(url: string, params?: any): Promise<ApiResponse<T>> =>
+    request(url, 'post', params),
+  patch: <T>(url: string, params?: any): Promise<ApiResponse<T>> =>
+    request(url, 'patch', params),
+  delete: <T>(url: string, params?: any): Promise<ApiResponse<T>> =>
+    request(url, 'delete', params)
 }

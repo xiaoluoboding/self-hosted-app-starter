@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
+import CrudView from '../views/CrudView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -8,6 +9,12 @@ const router = createRouter({
       path: '/',
       name: 'home',
       component: HomeView
+    },
+    // inspired by https://eugenkiss.github.io/7guis/tasks/#crud
+    {
+      path: '/crud',
+      name: 'crud',
+      component: CrudView
     },
     {
       path: '/about',
