@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"net/http"
 	"sha/backend/api"
+	"strconv"
 
 	"github.com/labstack/echo/v4"
 	"golang.org/x/crypto/bcrypt"
@@ -50,7 +51,6 @@ func (s *Server) registerUserRoutes(g *echo.Group) {
 		return nil
 	})
 
-	// GET /api/user/me is used to check if the user is logged in.
 	g.GET("/user/me", func(c echo.Context) error {
 		userSessionID := c.Get(getUserIDContextKey())
 		if userSessionID == nil {
@@ -115,6 +115,75 @@ func (s *Server) registerUserRoutes(g *echo.Group) {
 		if err := json.NewEncoder(c.Response().Writer).Encode(composeResponse(user)); err != nil {
 			return echo.NewHTTPError(http.StatusInternalServerError, "Failed to encode user response").SetInternal(err)
 		}
+
+		return nil
+	})
+
+	g.PATCH("/user/:userId", func(c echo.Context) error {
+		currentUserID := c.Get(getUserIDContextKey()).(int)
+		currentUser, err := s.Store.FindUser(&api.UserFind{
+			ID: &currentUserID,
+		})
+		if err != nil {
+			return echo.NewHTTPError(http.StatusInternalServerError, "Failed to find user").SetInternal(err)
+		}
+		if currentUser == nil {
+			return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Current session user not found with ID: %d", currentUserID)).SetInternal(err)
+		} else if currentUser.Role != api.Owner {
+			return echo.NewHTTPError(http.StatusForbidden, "Access forbidden for current session user").SetInternal(err)
+		}
+
+		userID, err := strconv.Atoi(c.Param("userId"))
+		if err != nil {
+			return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("ID is not a number: %s", c.Param("userId"))).SetInternal(err)
+		}
+
+		userPatch := &api.UserPatch{
+			ID: userID,
+		}
+		if err := json.NewDecoder(c.Request().Body).Decode(userPatch); err != nil {
+			return echo.NewHTTPError(http.StatusBadRequest, "Malformatted patch user request").SetInternal(err)
+		}
+
+		if userPatch.Password != nil && *userPatch.Password != "" {
+			passwordHash, err := bcrypt.GenerateFromPassword([]byte(*userPatch.Password), bcrypt.DefaultCost)
+			if err != nil {
+				return echo.NewHTTPError(http.StatusInternalServerError, "Failed to generate password hash").SetInternal(err)
+			}
+
+			passwordHashStr := string(passwordHash)
+			userPatch.PasswordHash = &passwordHashStr
+		}
+
+		user, err := s.Store.PatchUser(userPatch)
+		if err != nil {
+			return echo.NewHTTPError(http.StatusInternalServerError, "Failed to patch user").SetInternal(err)
+		}
+
+		c.Response().Header().Set(echo.HeaderContentType, echo.MIMEApplicationJSONCharsetUTF8)
+		if err := json.NewEncoder(c.Response().Writer).Encode(composeResponse(user)); err != nil {
+			return echo.NewHTTPError(http.StatusInternalServerError, "Failed to encode user response").SetInternal(err)
+		}
+
+		return nil
+	})
+
+	g.DELETE("/user/:userId", func(c echo.Context) error {
+		userID, err := strconv.Atoi(c.Param("userId"))
+		if err != nil {
+			return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("ID is not a number: %s", c.Param("userId"))).SetInternal(err)
+		}
+
+		userDelete := &api.UserDelete{
+			ID: userID,
+		}
+
+		err = s.Store.DeleteUser(userDelete)
+		if err != nil {
+			return echo.NewHTTPError(http.StatusInternalServerError, fmt.Sprintf("Failed to delete memo ID: %v", userID)).SetInternal(err)
+		}
+
+		c.JSON(http.StatusOK, true)
 
 		return nil
 	})

@@ -16,6 +16,15 @@ func (s *Store) CreateUser(create *api.UserCreate) (*api.User, error) {
 	return user, nil
 }
 
+func (s *Store) DeleteUser(delete *api.UserDelete) error {
+	err := deleteUser(s.db, delete)
+	if err != nil {
+		return FormatError(err)
+	}
+
+	return nil
+}
+
 func (s *Store) PatchUser(patch *api.UserPatch) (*api.User, error) {
 	user, err := patchUser(s.db, patch)
 	if err != nil {
@@ -57,7 +66,7 @@ func createUser(db *DB, create *api.UserCreate) (*api.User, error) {
 			name,
 			password_hash
 		)
-		VALUES (?, ?, ?, ?, ?)
+		VALUES (?, ?, ?, ?)
 		RETURNING id, email, role, name, password_hash, created_ts, updated_ts
 	`,
 		create.Email,
@@ -85,6 +94,20 @@ func createUser(db *DB, create *api.UserCreate) (*api.User, error) {
 	}
 
 	return &user, nil
+}
+
+func deleteUser(db *DB, delete *api.UserDelete) error {
+	result, err := db.Db.Exec(`DELETE FROM user WHERE id = ?`, delete.ID)
+	if err != nil {
+		return FormatError(err)
+	}
+
+	rows, _ := result.RowsAffected()
+	if rows == 0 {
+		return &common.Error{Code: common.NotFound, Err: fmt.Errorf("User ID not found: %d", delete.ID)}
+	}
+
+	return nil
 }
 
 func patchUser(db *DB, patch *api.UserPatch) (*api.User, error) {

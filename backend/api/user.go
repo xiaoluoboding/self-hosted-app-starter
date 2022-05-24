@@ -10,6 +10,16 @@ const (
 	NormalUser Role = "USER"
 )
 
+func (e Role) String() string {
+	switch e {
+	case Owner:
+		return "OWNER"
+	case NormalUser:
+		return "USER"
+	}
+	return "USER"
+}
+
 type User struct {
 	ID int `json:"id"`
 
@@ -33,6 +43,10 @@ type UserCreate struct {
 	PasswordHash string
 }
 
+type UserDelete struct {
+	ID int `json:"id"`
+}
+
 type UserPatch struct {
 	ID int
 
@@ -40,7 +54,6 @@ type UserPatch struct {
 	Email        *string `json:"email"`
 	Name         *string `json:"name"`
 	Password     *string `json:"password"`
-	ResetOpenID  *bool   `json:"resetOpenId"`
 	PasswordHash *string
 }
 
