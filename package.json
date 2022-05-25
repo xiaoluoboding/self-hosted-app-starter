@@ -1,11 +1,14 @@
 {
   "name": "self-hosted-app-starter",
   "version": "0.1.0",
-  "description": "> A self hosted app starter for creator.",
+  "description": "A starter for the self-hosted app, help you to build your next full-stack project.",
   "main": "index.js",
   "scripts": {
     "dev:be": "air -c backend/scripts/.air.toml",
-    "dev:fe": "cd frontend && pnpm i && pnpm dev"
+    "dev:fe": "cd frontend && pnpm i && pnpm dev",
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:deploy": "sh ./deploy-docs.sh"
   },
   "repository": {
     "type": "git",
@@ -16,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/xiaoluoboding/self-hosted-starter/issues"
   },
-  "homepage": "https://github.com/xiaoluoboding/self-hosted-starter#readme"
+  "homepage": "https://github.com/xiaoluoboding/self-hosted-starter#readme",
+  "devDependencies": {
+    "vitepress": "^0.22.4"
+  }
 }

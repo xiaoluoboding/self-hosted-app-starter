@@ -38,13 +38,13 @@ docker run --name sha --publish 3399:8080 --volume ~/.getsha/:/var/opt/sha -e mo
 
 ## Tech Stack
 
-### Backend
+### Back-end
 
 - Go
 - Air
 - SQLite
 
-### Frontend
+### Front-end
 
 Generate by [vue3-starter](https://github.com/xiaoluoboding/vue3-starter)
 
@@ -55,8 +55,8 @@ Generate by [vue3-starter](https://github.com/xiaoluoboding/vue3-starter)
 ### Prerequisites
 
 - [Go](https://golang.org/doc/install) (1.16 or later)
-- [pnpm](https://pnpm.io/installation)
 - [Air](https://github.com/cosmtrek/air#installation) (1.27.10 or later). This is for backend live reload.
+- [pnpm](https://pnpm.io/installation)
 
 ## Setup
 
@@ -87,7 +87,7 @@ Generate by [vue3-starter](https://github.com/xiaoluoboding/vue3-starter)
    ```bash
    pnpm run dev:fe
    or
-   cd frontend && pnpm i && pnpm dev
+   cd frontend && pnpm i && pnpm run dev
    ```
 
 The app should now be running at https://localhost:3000 and change either frontend or backend code would trigger live reload.
