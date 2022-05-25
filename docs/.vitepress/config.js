@@ -1,7 +1,7 @@
 module.exports = {
   title: 'Self Hosted App Starter',
   description: 'A starter for the self-hosted app, help you to build your next full-stack project.',
-  // base: '/svg-animation-booklet/',
+  // base: '/self-hosted-app-starter/',
   themeConfig: {
     nav: [{
         text: 'Home',
