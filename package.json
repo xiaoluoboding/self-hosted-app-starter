@@ -2,7 +2,6 @@
   "name": "self-hosted-app-starter",
   "version": "0.1.0",
   "description": "A starter for the self-hosted app, help you to build your next full-stack project.",
-  "main": "index.js",
   "scripts": {
     "dev:be": "air -c backend/scripts/.air.toml",
     "dev:fe": "cd frontend && pnpm i && pnpm dev",
@@ -16,6 +15,10 @@
   },
   "author": "xiaoluoboding",
   "license": "MIT",
+  "keywords": [
+    "self-hosted", "starter", "go", "sqlite",
+    "vue3", "tailwindcss", "vite", "vitepress"
+  ],
   "bugs": {
     "url": "https://github.com/xiaoluoboding/self-hosted-starter/issues"
   },

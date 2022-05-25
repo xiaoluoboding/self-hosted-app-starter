@@ -120,15 +120,34 @@ server: {
 
 ## Deploy
 
+### Docker Image
+
+We use GitHub Workflows to auto-push the docker image to the docker hub.
+
+And you need to provide your DOCKER username & password
+
+Don't worry, It can configuring at your own repo's settings, not in public.
+
+![](public/action-secrets.png)
+
+And then it will work with the GitHub Action.
+
+```yml
+# .github/workflows/build-and-push-dev-image.yml
+with:
+  username: ${{ secrets.DOCKER_USERNAME }}
+  password: ${{ secrets.DOCKER_PASSWORD }}
+```
+
 ### Railway
 
 [Railway](https://railway.app/) can help you deploy an App to Production in Minutes.
 
-### Deploy from Railway Button
+#### Deploy from Railway Button
 
 [![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/new/template/prX7No?referralCode=UEM9NF)
 
-### Deploy from GitHub Repo
+#### Deploy from GitHub Repo
 
 ![Deploy from GitHub Repo](public/railway-github-repo.png)
 
@@ -138,7 +157,7 @@ server: {
 
 - It will generate a random service domain, it has not finished yet.
 
-### Add Variable
+#### Add Variable
 
 ![Add Variable](public/railway-add-variables.png)
 
@@ -148,7 +167,7 @@ server: {
 
 - And now you can visit the service domain.
 
-### Change Service Domain
+#### Change Service Domain
 
 Now you can change the service domain as you wish
 
