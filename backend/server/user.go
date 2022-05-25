@@ -180,7 +180,7 @@ func (s *Server) registerUserRoutes(g *echo.Group) {
 
 		err = s.Store.DeleteUser(userDelete)
 		if err != nil {
-			return echo.NewHTTPError(http.StatusInternalServerError, fmt.Sprintf("Failed to delete memo ID: %v", userID)).SetInternal(err)
+			return echo.NewHTTPError(http.StatusInternalServerError, fmt.Sprintf("Failed to delete user ID: %v", userID)).SetInternal(err)
 		}
 
 		c.JSON(http.StatusOK, true)
