@@ -38,7 +38,7 @@
 ### ⚓️ Deploy with Docker
 
 ```docker
-docker run --name sha --publish 3399:8080 --volume ~/.getsha/:/var/opt/sha -e mode=prod getsha/sha:dev
+docker run --name sha --publish 3399:8080 --volume ~/.getsha/:/var/opt/sha -e mode=prod getsha/sha:0.1.0
 ```
 
 `SHA` should now be running at http://localhost:3399.
