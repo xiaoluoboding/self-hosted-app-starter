@@ -9,10 +9,19 @@
 <p align="center">A starter for the self-hosted app, help you to build your next full-stack project.</p>
 
 <p align="center">
+  <a href="https://self-hosted-app-starter.up.railway.app/">Live Demo</a> •
+  <a href="https://xiaoluoboding.github.io/self-hosted-app-starter/">Documentation</a>
+</p>
+
+<p align="center">
   <img alt="GitHub stars" src="https://img.shields.io/github/stars/xiaoluoboding/self-hosted-app-starter" />
   <img alt="Docker pull" src="https://img.shields.io/docker/pulls/getsha/sha.svg" />
   <img alt="Go report" src="https://goreportcard.com/badge/github.com/xiaoluoboding/self-hosted-app-starter" />
 </p>
+
+## Preview
+
+![Preview](public/preview.png)
 
 ## Features
 
@@ -31,6 +40,8 @@
 ```docker
 docker run --name sha --publish 3399:8080 --volume ~/.getsha/:/var/opt/sha -e mode=prod getsha/sha:dev
 ```
+
+`SHA` should now be running at http://localhost:3399.
 
 ### 🚄 Deploy on Railway
 
