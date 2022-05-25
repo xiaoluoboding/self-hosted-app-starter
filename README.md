@@ -29,9 +29,9 @@
 
 - 🪄 Full-stack starter with GSVT Stack
 - ⚓️ Self-hosted with `Dockerfile` on the fly
-- 💾 Store your data using SQLite database
-- 🖖 Choose your familar Frontend Teck Stack, default is Vue 3
-- 🚄 Deploy you app easily on the Railway
+- 💾 Store your data using the SQLite database
+- 🖖 Choosing your familiar Front-end Tech Stack, default is Vue 3
+- 🚄 Deploy your app easily on the Railway
 
 ### Deploy Services
 
