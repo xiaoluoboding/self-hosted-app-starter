@@ -16,7 +16,13 @@
 <p align="center">
   <img alt="GitHub stars" src="https://img.shields.io/github/stars/xiaoluoboding/self-hosted-app-starter" />
   <img alt="Docker pull" src="https://img.shields.io/docker/pulls/getsha/sha.svg" />
-  <img alt="Go report" src="https://goreportcard.com/badge/github.com/xiaoluoboding/self-hosted-app-starter" />
+  <!-- <img alt="Go report" src="https://goreportcard.com/badge/github.com/xiaoluoboding/self-hosted-app-starter" /> -->
+</p>
+
+<p align="center" >
+  <a href="https://gitpod.io/#https://github.com/xiaoluoboding/self-hosted-app-starter">
+    <image src="https://gitpod.io/button/open-in-gitpod.svg" />
+  </a>
 </p>
 
 ## Preview
