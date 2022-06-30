@@ -4,4 +4,4 @@ services:
     env: docker
     envVars:
       - key: PORT
-      - value: 8080
+        value: 8080
