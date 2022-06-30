@@ -31,13 +31,13 @@
 
 ## Features
 
-> SHA is built on top of GSVT Stack, which stands for Go、SQLite、Vue 3、TailwindCSS
+> SHA is built on top of GSVT Stack, which stands for Go、SQLite、Vue 3、Tailwind CSS
 
 - 🪄 Full-stack starter with GSVT Stack
 - ⚓️ Self-hosted with `Dockerfile` on the fly
 - 💾 Store your data using the SQLite database
 - 🖖 Choosing your familiar Front-end Tech Stack, default is Vue 3
-- 🚄 Deploy your app easily on the Railway
+- 🚄 Deploy your app easily on the Railway / Render
 
 ### Deploy Services
 
@@ -52,6 +52,10 @@ docker run --name sha --publish 3399:8080 --volume ~/.getsha/:/var/opt/sha -e mo
 ### 🚄 Deploy on Railway
 
 [![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/new/template/prX7No?referralCode=UEM9NF)
+
+### ☁️ Deploy to Render
+
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/xiaoluoboding/self-hosted-app-starter)
 
 ## Tech Stack
 

@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: self-hosted-app-starter
+    env: docker
+    envVars:
+      - key: PORT
+      - value: 8080
