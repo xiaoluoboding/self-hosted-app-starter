@@ -9,7 +9,7 @@
 <p align="center">A starter for the self-hosted app, help you to build your next full-stack project.</p>
 
 <p align="center">
-  <a href="https://self-hosted-app-starter.up.railway.app/">Live Demo</a> •
+  <a href="https://sha-starter.up.railway.app/">Live Demo</a> •
   <a href="https://xiaoluoboding.github.io/self-hosted-app-starter/">Documentation</a>
 </p>
 
