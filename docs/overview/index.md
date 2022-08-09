@@ -2,7 +2,7 @@
 layout: doc
 ---
 
-# Overview
+# Getting Started
 
 `self-hosted-app-starter` (AKA: SHA) is a starter for the self-hosted app, help you to build your next full-stack project quickly.
 

@@ -28,7 +28,7 @@ export default {
     sidebar: [{
       text: 'Overview',
       items: [{
-          text: 'Getting Starterd',
+          text: 'Getting Started',
           link: '/overview/'
         },
         {
