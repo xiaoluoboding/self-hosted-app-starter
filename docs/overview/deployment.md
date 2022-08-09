@@ -14,7 +14,7 @@ And you need to provide your DOCKER username & password
 
 Don't worry, It can configuring at your own repo's settings, not in public.
 
-![](public/action-secrets.png)
+![](/action-secrets.png)
 
 And then it will work with the GitHub Action.
 
