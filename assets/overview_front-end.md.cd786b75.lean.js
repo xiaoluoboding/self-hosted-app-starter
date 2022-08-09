@@ -1,0 +1,1 @@
+import{_ as e,c as t,o as a}from"./app.bb652f9f.js";const f=JSON.parse('{"title":"Back-end","description":"","frontmatter":{"layout":"doc","title":"Back-end"},"headers":[],"relativePath":"overview/back-end.md"}'),r={name:"overview/back-end.md"};function o(n,c,d,s,i,p){return a(),t("div")}var l=e(r,[["render",o]]);export{f as __pageData,l as default};
