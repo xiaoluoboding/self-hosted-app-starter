@@ -1,11 +1,16 @@
-module.exports = {
-  title: 'Self Hosted App Starter',
+export default {
+  language: 'en-US',
+  title: 'SHA Starter',
   description: 'A starter for the self-hosted app, help you to build your next full-stack project.',
   // base: '/self-hosted-app-starter/',
   themeConfig: {
     nav: [{
         text: 'Home',
-        link: 'overview'
+        link: '/'
+      },
+      {
+        text: 'Guide',
+        link: '/overview/'
       },
       {
         text: 'Vue 3 Starter',
@@ -22,7 +27,23 @@ module.exports = {
     ],
     sidebar: [{
       text: 'Overview',
-      link: '/overview'
-    }]
+      items: [{
+          text: 'Getting Starterd',
+          link: '/overview/'
+        },
+        {
+          text: 'Setup the Project',
+          link: '/overview/setup-the-project'
+        },
+        {
+          text: 'Deployment',
+          link: '/overview/deployment'
+        },
+      ]
+    }],
+    footer: {
+      message: 'Released under the MIT License.',
+      copyright: 'Copyright © 2022-present xiaoluoboding'
+    }
   }
 }

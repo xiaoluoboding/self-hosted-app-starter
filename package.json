@@ -16,14 +16,20 @@
   "author": "xiaoluoboding",
   "license": "MIT",
   "keywords": [
-    "self-hosted", "starter", "go", "sqlite",
-    "vue3", "tailwindcss", "vite", "vitepress"
+    "self-hosted",
+    "starter",
+    "go",
+    "sqlite",
+    "vue3",
+    "tailwindcss",
+    "vite",
+    "vitepress"
   ],
   "bugs": {
     "url": "https://github.com/xiaoluoboding/self-hosted-starter/issues"
   },
   "homepage": "https://github.com/xiaoluoboding/self-hosted-starter#readme",
   "devDependencies": {
-    "vitepress": "^0.22.4"
+    "vitepress": "1.0.0-alpha.4"
   }
 }

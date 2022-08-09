@@ -1,7 +1,7 @@
 {
-  "name": "vue3-starter",
+  "name": "vue3-starter-starter",
   "version": "0.0.0",
-  "description": "🖖 A Better Vue 3 Starter Template，generate by create-vue.",
+  "description": "🖖 A Better Vue 3 Starter Template, generate by create-vue.",
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",

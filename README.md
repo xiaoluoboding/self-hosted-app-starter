@@ -55,7 +55,7 @@ docker run --name sha --publish 3399:8080 --volume ~/.getsha/:/var/opt/sha -e mo
 
 ### ☁️ Deploy to Render
 
-[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/xiaoluoboding/self-hosted-app-starter)
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://dashboard.render.com/web/new)
 
 ## Tech Stack
 

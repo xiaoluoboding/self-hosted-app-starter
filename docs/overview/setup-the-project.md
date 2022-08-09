@@ -1,12 +1,8 @@
-# Overview
+---
+layout: doc
+---
 
-`self-hosted-app-starter` (AKA: SHA) is a starter for the self-hosted app, help you to build your next full-stack project quickly.
-
-`SHA` is built on top of GSVT Stack, which stands for `Go`、`SQLite`、`Vue 3`、`TailwindCSS`
-
-If you are familiar with the `GSVT Stack`, you will love it.
-
-## Setup the Project
+# Setup the Project
 
 Prerequisites for the starter
 
@@ -88,12 +84,11 @@ cd frontend && pnpm i && pnpm run dev
 then you will see the messages in the console:
 
 ```bash
-vite v2.8.6 dev server running at:
+VITE v3.0.4  ready in 607 ms
 
-> Local: https://localhost:3000
-> Network: use `--host` to expose
+➜  Local:   http://localhost:5173/
+➜  Network: use --host to expose
 
-ready in 669ms.
 ```
 
 The app should now be running at `https://localhost:3000` and change either frontend or backend code would trigger live reload.
@@ -117,58 +112,3 @@ server: {
   }
 }
 ```
-
-## Deploy
-
-### Docker Image
-
-We use GitHub Workflows to auto-push the docker image to the docker hub.
-
-And you need to provide your DOCKER username & password
-
-Don't worry, It can configuring at your own repo's settings, not in public.
-
-![](public/action-secrets.png)
-
-And then it will work with the GitHub Action.
-
-```yml
-# .github/workflows/build-and-push-dev-image.yml
-with:
-  username: ${{ secrets.DOCKER_USERNAME }}
-  password: ${{ secrets.DOCKER_PASSWORD }}
-```
-
-### Railway
-
-[Railway](https://railway.app/) can help you deploy an App to Production in Minutes.
-
-#### Deploy from Railway Button
-
-[![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/new/template/prX7No?referralCode=UEM9NF)
-
-#### Deploy from GitHub Repo
-
-![Deploy from GitHub Repo](public/railway-github-repo.png)
-
-- Fork the repo first.
-
-- When you selected the GitHub repo, It will automatically look for and use the [Dockerfile](https://github.com/xiaoluoboding/self-hosted-app-starter/blob/main/Dockerfile) at the repo's root, and deploy the services.
-
-- It will generate a random service domain, it has not finished yet.
-
-#### Add Variable
-
-![Add Variable](public/railway-add-variables.png)
-
-- We must add a variable named `PORT`, value is `8080`, because the back-end server is running at `8080`
-
-- When you click the `Add` button, it will redeploy the service automatically.
-
-- And now you can visit the service domain.
-
-#### Change Service Domain
-
-Now you can change the service domain as you wish
-
-like: [https://self-hosted-app-starter.up.railway.app/](https://self-hosted-app-starter.up.railway.app/)
