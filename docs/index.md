@@ -3,13 +3,13 @@ layout: home
 
 hero:
   name: SHA Starter
-  text: A starter for the self-hosted app.
+  text: A starter for the self-hosted app
   tagline: Help you to build your next full-stack project.
   image: /logo-sha.svg
   actions:
     - theme: brand
       text: Get Started →
-      link: /overview
+      link: /overview/
     - theme: alt
       text: View on GitHub
       link: https://github.com/xiaoluoboding/self-hosted-app-starter
