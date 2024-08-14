@@ -1,12 +1,13 @@
-type UserId = number
-type UserRole = 'OWNER' | 'USER'
+export type UserId = number
+type TimeStamp = number
+export type UserRole = 'OWNER' | 'USER'
 
 export enum UserRoleEnum {
   OWNER = 'OWNER',
   USER = 'USER'
 }
 
-interface User {
+export interface User {
   id: UserId
 
   createdTs: TimeStamp
@@ -17,18 +18,19 @@ interface User {
   role: UserRole
 }
 
-interface UserCreate {
+export interface UserCreate {
   email: string
   name: string
   role: UserRole
   password: string
 }
 
-interface UserDelete {
+export interface UserDelete {
   id: UserId
 }
 
-interface UserPatch {
+export interface UserPatch {
+  id: UserId
   name?: string
   password?: string
 }

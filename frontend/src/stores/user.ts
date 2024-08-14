@@ -1,9 +1,10 @@
 import { defineStore } from 'pinia'
 
 import { getUserList } from '@/services'
+import { User } from '@/types/user'
 
 type UserState = {
-  userList: Map<number, User>
+  userMap: Map<number, User>
   currentUser: User
 }
 
@@ -11,7 +12,7 @@ export const useUserStore = defineStore({
   id: 'user',
   state: (): UserState => ({
     userMap: new Map(),
-    currentUser: {}
+    currentUser: {} as User
   }),
   getters: {
     userList(state: UserState): User[] {

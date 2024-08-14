@@ -20,28 +20,28 @@
         <RouterLink to="/about">About</RouterLink>
       </nav>
       <div class="w-full text-center mt-8 space-x-4" lg="text-left">
-        <button
+        <Button
           border="~ [var(--color-border)]"
           class="p-2 rounded-md"
-          @click="(e) => toggleDark()"
+          @click="() => toggleDark()"
         >
           <carbon:moon class="w-6 h-6" v-if="isDark" />
           <carbon:sun class="w-6 h-6" v-else />
-        </button>
-        <button
+        </Button>
+        <Button
           border="~ [var(--color-border)]"
           class="p-2 rounded-md"
           @click="toggleLocales"
         >
           <carbon:language class="w-6 h-6" />
-        </button>
-        <button
+        </Button>
+        <Button
           border="~ [var(--color-border)]"
           class="p-2 rounded-md"
           @click="gotoGitHub"
         >
           <carbon:logo-github class="w-6 h-6" />
-        </button>
+        </Button>
       </div>
     </div>
   </header>
@@ -68,7 +68,7 @@
           </a>
         </span>
         <span class="px-2 text-sky-300">|</span>
-        <carbon:cafe class="text-sky-500" />
+        <carbon:cafe class="text-amber-500" />
         <span>
           <a
             href="https://www.buymeacoffee.com/xlbd"
@@ -79,7 +79,7 @@
           </a>
         </span>
         <span class="px-2 text-sky-300">|</span>
-        <mdi:heart class="text-sky-500" />
+        <mdi:heart class="text-rose-500" />
         <span>
           <a
             href="https://github.com/sponsors/xiaoluoboding"
@@ -100,11 +100,13 @@ import { useI18n } from 'vue-i18n'
 import { onMounted } from 'vue'
 
 import HelloWorld from '@/components/HelloWorld.vue'
-import { isDark, toggleDark } from '@/composables/useDark'
+import { isDark, toggleDark } from '@/composables/useDarkmode'
+import { availableLocales, loadLanguageAsync } from '@/plugins/i18n'
 import { getSystemStatus, getUserInfo, login } from '@/services'
 import { useUserStore } from '@/stores/user'
+import { Button } from './components/ui/button'
 
-const { locale, availableLocales } = useI18n()
+const { locale } = useI18n()
 const userStore = useUserStore()
 
 const gotoGitHub = () => {
@@ -114,11 +116,13 @@ const gotoGitHub = () => {
   )
 }
 
-const toggleLocales = () => {
+async function toggleLocales() {
   // change to some real logic
   const locales = availableLocales
-  console.log(locale.value)
-  locale.value = locales[(locales.indexOf(locale.value) + 1) % locales.length]
+  const newLocale =
+    locales[(locales.indexOf(locale.value) + 1) % locales.length]
+  await loadLanguageAsync(newLocale)
+  locale.value = newLocale
 }
 
 const loginAsGuest = async () => {

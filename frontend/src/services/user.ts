@@ -1,10 +1,11 @@
 import API from '@/utils/api'
+import { User, UserCreate, UserId, UserPatch } from '@/types/user'
 
 export function createUser(userCreate: UserCreate) {
-  return API.post<User[]>('/api/user', userCreate)
+  return API.post<User>('/api/user', userCreate)
 }
 
-export function deleteUser(userId: userId) {
+export function deleteUser(userId: UserId) {
   return API.delete<User>(`/api/user/${userId}`)
 }
 

@@ -10,11 +10,12 @@
 
 ## Features
 
-- 💨 [windicss](https://windicss.org/integrations/vite.html) - Next generation utility-first CSS framework
+- 💨 [Tailwind CSS](https://tailwindcss.com/docs/installation) - Rapidly build modern websites without ever leaving your HTML.
 - 🤹 [unplugin-icons](https://github.com/antfu/unplugin-icons) - Use icons from any iconsets
 - 🍍 [pinia](https://pinia.esm.dev/) - The Vue Store that you will enjoy using
 - 🌍 [vue-i18n](https://vue-i18n.intlify.dev/installation.html) - Vue I18n is internationalization plugin for Vue.js
 - 🛠️ [@vueuse/core](https://vueuse.org/) - Collection of essential Vue Composition Utilities
+- 💅 [Shadcn Vue](https://www.shadcn-vue.com/) - Build your component library.
 
 ## Use the Template
 
@@ -85,7 +86,7 @@ pnpm run lint
 
 ## Related Template
 
-* [nuxt3-starter](https://github.com/xiaoluoboding/nuxt3-starter) - 💚 A Better Nuxt 3 Starter Template，generate by `nuxi`.
+- [nuxt3-starter](https://github.com/xiaoluoboding/nuxt3-starter) - 💚 A Better Nuxt 3 Starter Template，generate by `nuxi`.
 
 ## License
 

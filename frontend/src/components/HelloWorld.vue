@@ -35,10 +35,10 @@
           >
         </li>
         <li class="flex items-center">
-          <carbon:dot-mark class="text-sky-500" /><a
+          <carbon:dot-mark class="text-emerald-500" /><a
             target="_blank"
-            href="https://windicss.org/"
-            >WindiCSS</a
+            href="https://www.shadcn-vue.com/docs/installation/vite.html"
+            >Shadcn Vue</a
           >
         </li>
       </ul>

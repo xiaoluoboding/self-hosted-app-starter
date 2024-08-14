@@ -57,6 +57,7 @@
 import { ref, reactive, computed, watch } from 'vue'
 import { useUserStore } from '@/stores/user'
 import { createUser, deleteUser, patchUser } from '@/services'
+import { UserRoleEnum } from '@/types/user'
 
 const userStore = useUserStore()
 
@@ -96,7 +97,7 @@ const handleCreateUser = async () => {
       const userInfo = {
         name: localStore.name,
         email: localStore.email,
-        role: 'USER',
+        role: UserRoleEnum.USER,
         password: '123456'
       }
 

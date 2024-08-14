@@ -1,4 +1,4 @@
-import qs from 'qs'
+// import qs from 'qs'
 import axios from 'axios'
 import type { AxiosResponse, AxiosError } from 'axios'
 
@@ -32,13 +32,13 @@ type ApiResponse<T> = {
   message?: string
 }
 
-const mapData = (type: string, params: any) => {
-  if (type === 'post') {
-    return qs.stringify(params)
-  }
+// const mapData = (type: string, params: any) => {
+//   if (type === 'post') {
+//     return qs.stringify(params)
+//   }
 
-  return null
-}
+//   return null
+// }
 
 function request<T>(
   url: string,

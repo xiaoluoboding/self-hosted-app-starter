@@ -1,15 +1,16 @@
 import { fileURLToPath, URL } from 'url'
-import { resolve } from 'path'
+import path from 'node:path'
+import tailwind from 'tailwindcss'
+import autoprefixer from 'autoprefixer'
 
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
-import WindiCSS from 'vite-plugin-windicss'
 import Icons from 'unplugin-icons/vite'
 import IconsResolver from 'unplugin-icons/resolver'
 import Components from 'unplugin-vue-components/vite'
-import I18n from '@intlify/vite-plugin-vue-i18n'
+import VueI18nPlugin from '@intlify/unplugin-vue-i18n/vite'
 
-const r = (...args: string[]) => resolve(__dirname, ...args)
+const r = (...args: string[]) => path.resolve(__dirname, ...args)
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -30,14 +31,18 @@ export default defineConfig({
     // https://github.com/antfu/unplugin-icons
     Icons(),
 
-    // https://windicss.org/integrations/vite.html
-    WindiCSS(),
-
     // https://vue-i18n.intlify.dev/installation.html
-    I18n({
-      include: [resolve(__dirname, 'src/locales/**')]
+    VueI18nPlugin({
+      include: [path.resolve(__dirname, 'src/locales/**')]
     })
   ],
+
+  // https://github.com/vitejs/vite/tree/master/packages/vite#config-options
+  css: {
+    postcss: {
+      plugins: [tailwind(), autoprefixer()]
+    }
+  },
 
   resolve: {
     alias: {

@@ -1,4 +1,6 @@
 import API from '@/utils/api'
+import { SystemStatus } from '@/types/system'
+import { User, UserRole } from '@/types/user'
 
 export function getSystemStatus() {
   return API.get<SystemStatus>('/api/status')

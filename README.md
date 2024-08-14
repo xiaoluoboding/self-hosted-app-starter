@@ -71,7 +71,8 @@ Generate by [vue3-starter](https://github.com/xiaoluoboding/vue3-starter)
 
 - Vue 3
 - Vite
-- WindiCSS
+- Shadcn Vue
+- Tailwind CSS
 
 ### Prerequisites
 
