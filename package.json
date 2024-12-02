@@ -4,7 +4,7 @@
   "description": "A starter for the self-hosted app, help you to build your next full-stack project.",
   "scripts": {
     "dev:be": "air -c backend/scripts/.air.toml",
-    "dev:fe": "cd frontend && pnpm i && pnpm dev",
+    "dev:fe": "cd frontend && pnpm i && pnpm build && pnpm dev",
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
     "docs:deploy": "sh ./deploy-docs.sh"
